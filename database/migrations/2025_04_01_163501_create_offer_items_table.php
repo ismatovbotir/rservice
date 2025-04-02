@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('company_id')->constrained();
-            $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('location')->nullable();
-            $table->text('address')->nullable();
+        Schema::create('offer_items', function (Blueprint $table) {
+            $table->id();
+            $table->foreignUuid('offer_id');
+            $table->foreignId('item_id');
+            $table->integer('qty')->default(1);
+            $table->double('price',2);
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('offer_items');
     }
 };

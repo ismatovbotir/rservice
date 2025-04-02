@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('company_id')->constrained();
+        Schema::create('items', function (Blueprint $table) {
+            $table->id();
+            $table->string('art');
             $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('location')->nullable();
-            $table->text('address')->nullable();
+            $table->string('acc_code')->nullable();
+            $table->string('acc_name')->nullable();
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('items');
     }
 };
