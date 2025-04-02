@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained();
             $table->foreignUuid('client_id')->constrained();
+            $table->foreignUuid('company_id')->nullable()->constrained();
             $table->foreignUuid('invoice_id')->nullable('constrained');
             $table->boolean('payment')->default(false);
             $table->string('currency_id');

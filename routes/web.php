@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FiscalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.temp');
-});
+    return view('home');
+})->name('main');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('/fiscal',FiscalController::class);
