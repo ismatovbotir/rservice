@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained();
+            $table->foreignUuid('client_id')->constrained();
             $table->foreignUuid('invoice_id')->nullable('constrained');
-            $table->boolean('payment')->default('false');
-            $table->foreign('currency_id')->references('id')->on('currency')->onDelete('cascade');
+            $table->boolean('payment')->default(false);
+            $table->string('currency_id');
+            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->double('total')->default(0);
+            $table->double('rate')->default(1);
             $table->double('currency_total',2)->default(0);
             
 

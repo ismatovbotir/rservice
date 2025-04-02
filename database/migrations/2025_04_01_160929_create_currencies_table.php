@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name')->default('Uzbekistan sum');
-            $table->integer('main')->default(0);
+            $table->boolean('main')->default(false);
             $table->timestamps();
         });
     }

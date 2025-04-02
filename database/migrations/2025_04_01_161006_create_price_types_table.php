@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('price_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreign('currency_id')->references('id')->on('currency')->onDelete('cascade');
+            $table->string('currency_id');
+            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('cascade');
             $table->timestamps();
         });
     }

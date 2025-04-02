@@ -19,9 +19,10 @@ return new class extends Migration
             $table->decimal('discount_val',2)->default(0);
             $table->enum('discount_type',['%','$'])->default('$');
             $table->decimal('total',2)->default(0);
-            $table->boolean('temp')->default('true');
-            $table->enum('type',['module','item','service'])->default('ofd');
+            $table->boolean('temp')->default(true);
+            $table->enum('type',['module','item','service'])->default('module');
             $table->boolean('subscription')->default(false);
+            $table->boolean('public')->default(false);
 
             $table->timestamps();
         });
