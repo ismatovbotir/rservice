@@ -22,31 +22,31 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/index-invest.html" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Balance</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/index-invest.html" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Tijoriy Takliflar</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/index-crypto.html" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
                             <span class="nk-menu-text">OFD</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/index-analytics.html" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-chat"></em></span>
                             <span class="nk-menu-text">Murojaatlar</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="html/index-invest.html" class="nk-menu-link">
+                        <a href="" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
                             <span class="nk-menu-text">Uskunalar</span>
                         </a>
