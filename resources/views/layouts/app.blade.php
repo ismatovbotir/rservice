@@ -21,12 +21,16 @@
         <!-- main @s -->
         <div class="nk-main ">
             <!-- sidebar @s -->
+            @auth()
             @include('layouts.sidebar')
+            @endauth
             <!-- sidebar @e -->
             <!-- wrap @s -->
             <div class="nk-wrap ">
                 <!-- main header @s -->
+                @auth()
                 @include('layouts.header')
+                @endauth
                 <!-- main header @e -->
                 <!-- content @s -->
                 
@@ -37,7 +41,9 @@
                
                 <!-- content @e -->
                 <!-- footer @s -->
+                @auth
                 @include('layouts.footer')
+                @endauth
                 <!-- footer @e -->
             </div>
             <!-- wrap @e -->
@@ -46,11 +52,13 @@
     </div>
     <!-- app-root @e -->
     <!-- JavaScript -->
+    @auth
     @section('javascript')
     <script src="./assets/js/bundle.js?ver=2.4.0"></script>
     <script src="./assets/js/scripts.js?ver=2.4.0"></script>
     <script src="./assets/js/charts/gd-default.js?ver=2.4.0"></script>
     @show
+    @endauth
 </body>
 
 </html>
