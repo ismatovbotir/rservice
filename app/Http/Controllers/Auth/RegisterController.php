@@ -38,7 +38,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        return to_route('login');
+        //return to_route('login');
     }
 
     /**
@@ -47,7 +47,18 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    
+     public function showRegistrationForm()
+     {
+         return to_route('login');
+         //return view('auth.register');
+     }
+ 
+    
+    
+    
+    
+     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],

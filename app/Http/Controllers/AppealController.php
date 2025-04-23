@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AppealController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $this->middleware('auth');
+        //
     }
 
     /**

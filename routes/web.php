@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\AppealController;
 use App\Http\Controllers\FiscalController;
 use App\Http\Controllers\OfferController;
 use Illuminate\Support\Facades\Auth;
@@ -29,3 +30,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/fiscal',FiscalController::class);
 Route::resource('/bill',BillController::class);
 Route::resource('/offer',OfferController::class);
+Route::resource('/offer',AppealController::class);
