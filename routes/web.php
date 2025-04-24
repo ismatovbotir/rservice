@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->middleware('auth')->name('main');
+Route::get('/label', function () {
+    return view('label');
+});
 
 Auth::routes();
 
