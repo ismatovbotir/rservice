@@ -15,6 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('telegram_id')->index();
             $table->foreignUuid('user_id')->nullable()->constrained();
+            $table->boolean('is_bot')->default(false);
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('username')->nullable();
+            $table->string('language_code')->nullable();
+            $table->boolean('is_premium')->default(false);
+            $table->string('photo')->nullable();
+            $table->string('phone')->nullable();
+
             $table->timestamps();
         });
     }

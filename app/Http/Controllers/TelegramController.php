@@ -33,6 +33,10 @@ class TelegramController extends Controller
         //if (in_array( $ipAddress,$telegramIpRanges)) {
             $id = '1936361';
             $data = $request->all();
+            if (!isset($data['update_id'])) {
+                // Нет update_id — неправильный запрос
+                return response()->json(['error' => 'No update_id found'], 400);
+            }
             $text= $data;
             $response = Http::withBody(json_encode(
                 [
@@ -45,8 +49,7 @@ class TelegramController extends Controller
 
 
             return response()->json([
-                'status' => 'ok',
-                'host' => $text
+                'status' => 'ok'
             ], 200);
         //} else {
           //  return 0;
