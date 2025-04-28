@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('telegrams', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('telegram_id')->index();
+            $table->unsignedBigInteger('id')->primary();
+            
             $table->foreignUuid('user_id')->nullable()->constrained();
             $table->boolean('is_bot')->default(false);
             $table->string('first_name')->nullable();

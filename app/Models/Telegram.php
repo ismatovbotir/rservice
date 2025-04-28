@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Telegram extends Model
 {
     use HasFactory;
+    public $incrementing=false;
+    //protected $keyType='int';
+    //protected $primaryKey='id';
+    protected $guarded=[];
 }
