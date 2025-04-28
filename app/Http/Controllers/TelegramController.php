@@ -30,6 +30,7 @@ class TelegramController extends Controller
     {
         $host = $request->path();
         $ipAddress = $request->ip();
+        
 
 
         //if ($host == 'api/telegram') {
