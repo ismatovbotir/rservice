@@ -30,6 +30,7 @@ class TelegramController extends Controller
     {
         $id='1936361';
         $data=$request->all();
+        $host = $request->getHost();
         $response = Http::withBody(json_encode(
             [
                 "chat_id" => $id,
@@ -42,6 +43,7 @@ class TelegramController extends Controller
 
         return response()->json([
             'status' => 'ok',
+            'host'=>$host
         ], 200);
     }
 
