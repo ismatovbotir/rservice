@@ -28,16 +28,16 @@ class TelegramController extends Controller
      */
     public function store(Request $request)
     {
+        $id='1936361';
         $data=$request->all();
-        $response=Http::asJson()->post(
-            'https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessages',
+        $response = Http::withBody(json_encode(
             [
-                'chat_id'=>1936361,
-                'text'=>$data,
-                'parse_mode'=>'html'
+                "chat_id" => $id,
+                "text" => $data,
+                "parse_mode" => "HTML"
             ]
-
-        );
+        ))
+            ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
 
 
         return response()->json([
