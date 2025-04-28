@@ -34,7 +34,7 @@ class TelegramController extends Controller
         $response = Http::withBody(json_encode(
             [
                 "chat_id" => $id,
-                "text" => $data,
+                "text" => $host,
                 "parse_mode" => "HTML"
             ]
         ))
