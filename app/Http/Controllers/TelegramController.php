@@ -28,23 +28,31 @@ class TelegramController extends Controller
      */
     public function store(Request $request)
     {
-        $id='1936361';
-        $data=$request->all();
         $host = $request->path();
-        $response = Http::withBody(json_encode(
-            [
-                "chat_id" => $id,
-                "text" => $host,
-                "parse_mode" => "HTML"
-            ]
-        ))
-            ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
+        $ipAddress = $request->ip();
 
 
-        return response()->json([
-            'status' => 'ok',
-            'host'=>$host
-        ], 200);
+        //if ($host == 'api/telegram') {
+            $id = '1936361';
+            $data = $request->all();
+
+            $response = Http::withBody(json_encode(
+                [
+                    "chat_id" => $id,
+                    "text" => $host,
+                    "parse_mode" => "HTML"
+                ]
+            ))
+                ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
+
+
+            return response()->json([
+                'status' => 'ok',
+                'host' => $host
+            ], 200);
+        //} else {
+          //  return 0;
+       // }
     }
 
     /**
