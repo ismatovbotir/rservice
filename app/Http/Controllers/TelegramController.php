@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Telegram;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -33,9 +35,21 @@ class TelegramController extends Controller
         //if (in_array( $ipAddress,$telegramIpRanges)) {
             $id = '1936361';
             $data = $request->all();
-            if (!isset($data['update_id']) && !isset($data['message'])) {
+            if (!isset($data['update_id']) ) {
                 // Нет update_id — неправильный запрос
-                return response()->json(['error' => 'No body found'], 400);
+                return response()->json(['error' => 'incorrect data was sent'], 400);
+            }
+
+            if (isset($data['message'])){
+
+                $user=$this->user($data['mesage']['from']);
+                
+            }else if(isset($data['edited_message'])){
+
+
+
+            }else{
+                return response()->json(['error' => 'incorrect data was sent'], 400);
             }
             
 
@@ -92,5 +106,25 @@ class TelegramController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    private function user($from){
+        $id = $from['id'];
+        $telegram = Telegram::find($id);
+        //$this->data = $telegram;
+        //$this->sendMessage();
+
+        if ($telegram === null) {
+            //$this->data = $data['message']['chat'];
+            //$this->sendMessage($data["message"]["chat"]["id"]);
+            try{
+                $telegram = Telegram::create(
+                $from
+            ); 
+            }catch(QueryException $e){
+                $telegram=null;
+            }
+        }
+    return $telegram;
     }
 }
