@@ -28,7 +28,7 @@ class TelegramController extends Controller
      */
     public function store(Request $request)
     {
-        $host = $request->path();
+        $host = $request->getHost();
         $ipAddress = $request->ip();
 
 
