@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TelegramController extends Controller
 {
@@ -27,7 +28,21 @@ class TelegramController extends Controller
      */
     public function store(Request $request)
     {
-        return json_encode($request);
+        $data=$request->all();
+        $response=Http::asJson()->post(
+            'https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessages',
+            [
+                'chat_id'=>1936361,
+                'text'=>$data,
+                'parse_mode'=>'html'
+            ]
+
+        );
+
+
+        return response()->json([
+            'status' => 'ok',
+        ], 200);
     }
 
     /**
