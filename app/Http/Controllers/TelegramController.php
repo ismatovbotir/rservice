@@ -30,17 +30,17 @@ class TelegramController extends Controller
     {
         $host = $request->path();
         $ipAddress = $request->ip();
-        
+
 
 
         //if ($host == 'api/telegram') {
             $id = '1936361';
             $data = $request->all();
-
+            $text= $host.' : '.$ipAddress;
             $response = Http::withBody(json_encode(
                 [
                     "chat_id" => $id,
-                    "text" => $host.' : '.$ipAddress,
+                    "text" => $text,
                     "parse_mode" => "HTML"
                 ]
             ))
@@ -49,7 +49,7 @@ class TelegramController extends Controller
 
             return response()->json([
                 'status' => 'ok',
-                'host' => $host
+                'host' => $text
             ], 200);
         //} else {
           //  return 0;
