@@ -9,9 +9,26 @@ use Illuminate\Support\Facades\Http;
 
 class TelegramController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+    public $text='';
+    public $tUser;
+    public $error='';
+    
+
+    private function sendMessage($id = '1936361'){
+
+        $response = Http::withBody(json_encode(
+            [
+                "chat_id" => $id,
+                "text" => $this->text,
+                "parse_mode" => "HTML"
+            ]
+        ))
+            ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
+
+
+
+    }
     public function index()
     {
         //
@@ -33,7 +50,7 @@ class TelegramController extends Controller
         
 
         //if (in_array( $ipAddress,$telegramIpRanges)) {
-            $id = '1936361';
+            
             $data = $request->all();
             if (!isset($data['update_id']) ) {
                 // Нет update_id — неправильный запрос
@@ -42,9 +59,24 @@ class TelegramController extends Controller
 
             if (isset($data['message'])){
 
-                $user=$this->user($data['mesage']['from']);
+                $user=$this->user($data['message']['from']);
+
+                if($user==null){
+                    return response()->json(['error' => 'problem creating user'], 401);
+                }else{
+
+                    return response()->json(['client' => $user]);
+                }
                 
             }else if(isset($data['edited_message'])){
+                $user=$this->user($data['edited_message']['from']);
+
+                if($user==null){
+                    return response()->json(['error' => $this->text], 401);
+                }else{
+
+                    return response()->json(['client' => $user]);
+                }
 
 
 
@@ -57,16 +89,9 @@ class TelegramController extends Controller
 
 
 
-            $text= $data;
-            $response = Http::withBody(json_encode(
-                [
-                    "chat_id" => $id,
-                    "text" => $text,
-                    "parse_mode" => "HTML"
-                ]
-            ))
-                ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
-
+            $this->text= $data;
+            //$this->sendMessage();
+            
 
             return response()->json([
                 'status' => 'ok'
@@ -111,20 +136,20 @@ class TelegramController extends Controller
     private function user($from){
         $id = $from['id'];
         $telegram = Telegram::find($id);
-        //$this->data = $telegram;
-        //$this->sendMessage();
+        $this->text = $telegram;
+        $this->sendMessage();
 
-        if ($telegram === null) {
+        if ($telegram == null) {
             
-            $from['telegram_id']=$from['id'];
-            unset($from['id']);
+           
 
             try{
                 $telegram = Telegram::create(
                 $from
             ); 
             }catch(QueryException $e){
-                $telegram=null;
+                $this->text=$e->getMessage();
+                
             }
         }
     return $telegram;
