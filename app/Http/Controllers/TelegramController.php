@@ -115,8 +115,10 @@ class TelegramController extends Controller
         //$this->sendMessage();
 
         if ($telegram === null) {
-            //$this->data = $data['message']['chat'];
-            //$this->sendMessage($data["message"]["chat"]["id"]);
+            
+            $from['telegram_id']=$from['id'];
+            unset($from['id']);
+
             try{
                 $telegram = Telegram::create(
                 $from
