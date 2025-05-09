@@ -126,13 +126,14 @@ class TelegramController extends Controller
 
 
                         $this->sendMessage($telegramUser->id);
-                        return response()->json([
-                            'status' => 'ok'
-                        ], 200);
+                        
                     }
 
                     $text=$data['message']['text'];
                     
+                    return response()->json([
+                        'status' => 'ok'
+                    ], 200);
                    
                     
 
