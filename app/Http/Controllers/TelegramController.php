@@ -54,7 +54,7 @@ class TelegramController extends Controller
             $data = $request->all();
             if (!isset($data['update_id']) ) {
                 // Нет update_id — неправильный запрос
-                return response()->json(['error' => 'incorrect data was sent'], 400);
+                //return response()->json(['error' => 'incorrect data was sent'], 400);
             }
 
             if (isset($data['message'])){
@@ -63,16 +63,17 @@ class TelegramController extends Controller
 
                 if($telegramUser==null){
 
-                    $this->text="Could not find user";
+                    $this->text="Could not find and create user";
                     $this->sendMessage($data['message']['from']['id']);
 
-                    return response()->json([
-                        'status' => 'ok'
-                    ], 200);
+                   
                 }else{
-
+                    if($telegramUser->phone==null){
+                        $this->text="Royxatdan otish uchun telefon raqamingizni yuboring";
+                        $this->sendMessage($telegramUser->id);
+                    }
                     
-                    $this->text=json_encode($telegramUser);
+                    //$this->text=json_encode($telegramUser);
                     //$this->sendMessage();
                 }
                 
@@ -144,8 +145,8 @@ class TelegramController extends Controller
     private function user($from){
         $id = $from['id'];
         $telegram = Telegram::find($id);
-        $this->text = $telegram;
-        $this->sendMessage();
+        //$this->text = $telegram;
+        //$this->sendMessage();
 
         if ($telegram == null) {
             
