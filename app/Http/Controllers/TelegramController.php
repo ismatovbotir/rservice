@@ -13,11 +13,13 @@ class TelegramController extends Controller
     public $text='';
     public $tUser;
     public $error='';
+    public $keyboard='';
     
 
     private function sendMessage($id = '1936361'){
 
-        $response = Http::withBody(json_encode(
+        if ($this->keyboard==''){
+           $response = Http::withBody(json_encode(
             [
                 "chat_id" => $id,
                 "text" => $this->text,
@@ -26,7 +28,21 @@ class TelegramController extends Controller
         ))
             ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
 
+ 
+        }else{
+            $response = Http::withBody(json_encode(
+                [
+                    "chat_id" => $id,
+                    "text" => $this->text,
+                    'reply_markup'=>$this->keyboard
+                ]
+            ))
+                ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
+    
+     
 
+        }
+        
 
     }
     public function index()
@@ -70,6 +86,21 @@ class TelegramController extends Controller
                 }else{
                     if($telegramUser->phone==null){
                         $this->text="Royxatdan otish uchun telefon raqamingizni yuboring";
+                        $this->keyboard= json_encode([
+                            'keyboard' => [
+                                [
+                                    [
+                                        'text' => 'Royxatdan otish uchun  📲 Telefon raqamni ulashish',
+                                        'request_contact' => true,
+                                    ]
+                                ]
+                            ],
+                            'resize_keyboard' => true,
+                            'one_time_keyboard' => true
+                        ]);
+
+
+
                         $this->sendMessage($telegramUser->id);
                     }
                     
