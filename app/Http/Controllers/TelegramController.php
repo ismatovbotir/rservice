@@ -93,7 +93,9 @@ class TelegramController extends Controller
                                     'phone'=>$data['message']['contact']['phone_number']
                                 ]);
                                 $this->text="Raqamingiz royixatga kiritildi, murojaat kiritish uchun iltimos email yuboring";
-
+                                $this->keyboard=json_encode([
+                                    'remove_keyboard' => true
+                                ]);
                             }else{
                                 $this->text="Bu sizning raqam emas(yoki telegramdan boshqa raqam ishlatasiz).Iltimos qaytada nyuboring";
                             }
