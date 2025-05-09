@@ -68,6 +68,8 @@ class TelegramController extends Controller
         //if (in_array( $ipAddress,$telegramIpRanges)) {
             
             $data = $request->all();
+            $this->text=json_encode($data);
+            $this->sendMessage();
             if (!isset($data['update_id']) ) {
                 // Нет update_id — неправильный запрос
                 //return response()->json(['error' => 'incorrect data was sent'], 400);
