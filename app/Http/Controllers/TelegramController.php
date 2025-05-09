@@ -65,11 +65,15 @@ class TelegramController extends Controller
 
                     $this->text="Could not find user";
                     $this->sendMessage($data['message']['from']['id']);
+
+                    return response()->json([
+                        'status' => 'ok'
+                    ], 200);
                 }else{
 
                     
                     $this->text=json_encode($telegramUser);
-                    $this->sendMessage();
+                    //$this->sendMessage();
                 }
                 
             }else if(isset($data['edited_message'])){
