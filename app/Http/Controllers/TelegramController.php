@@ -89,10 +89,13 @@ class TelegramController extends Controller
                     if($telegramUser->phone==null){
                         if(isset($data['message']['contact'])){
                             if($data['message']['contact']['user_id']==$telegramUser->id){
-                                $this->text="Bu sizning raqam";
+                                Telegram::where('id',$telegramUser->id)->update([
+                                    'phone'=>$data['message']['contact']['phone_number']
+                                ]);
+                                $this->text="Raqamingiz royixatga kiritildi, murojaat kiritish uchun iltimos email yuboring";
 
                             }else{
-                                $this->text="Bu sizning raqam emas";
+                                $this->text="Bu sizning raqam emas(yoki telegramdan boshqa raqam ishlatasiz).Iltimos qaytada nyuboring";
                             }
                             $this->sendMessage();
 
