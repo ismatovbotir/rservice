@@ -59,13 +59,17 @@ class TelegramController extends Controller
 
             if (isset($data['message'])){
 
-                $user=$this->user($data['message']['from']);
+                $telegramUser=$this->user($data['message']['from']);
 
-                if($user==null){
-                    return response()->json(['error' => 'problem creating user'], 401);
+                if($telegramUser==null){
+
+                    $this->text="Could not find user";
+                    $this->sendMessage($data['message']['from']['id']);
                 }else{
 
-                    return response()->json(['client' => $user]);
+                    
+                    $this->text=json_encode($telegramUser);
+                    $this->sendMessage();
                 }
                 
             }else if(isset($data['edited_message'])){
@@ -152,6 +156,6 @@ class TelegramController extends Controller
                 
             }
         }
-    return $telegram;
+        return $telegram;
     }
 }

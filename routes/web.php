@@ -33,4 +33,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/fiscal',FiscalController::class);
 Route::resource('/bill',BillController::class);
 Route::resource('/offer',OfferController::class);
-Route::resource('/offer',AppealController::class);
+Route::resource('/appeal',AppealController::class);
