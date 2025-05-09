@@ -104,7 +104,20 @@ class TelegramController extends Controller
 
 
                         $this->sendMessage($telegramUser->id);
+                        return response()->json([
+                            'status' => 'ok'
+                        ], 200);
                     }
+
+                    $text=$data['message']['text'];
+                    
+                    if(isset($data['message']['contact'])){
+                        $this->text=$data['message']['contact'];
+                        $this->sendMessage();
+                    }
+                    
+
+                    
                     
                     //$this->text=json_encode($telegramUser);
                     //$this->sendMessage();
