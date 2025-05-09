@@ -88,8 +88,15 @@ class TelegramController extends Controller
                 }else{
                     if($telegramUser->phone==null){
                         if(isset($data['message']['contact'])){
-                            $this->text=$data['message']['contact'];
+                            if($data['message']['contact']['user_id']==$telegramUser->id){
+                                $this->text="Bu sizning raqam";
+
+                            }else{
+                                $this->text="Bu sizning raqam emas";
+                            }
                             $this->sendMessage();
+
+                           
                             return response()->json([
                                 'status' => 'ok'
                             ], 200);
