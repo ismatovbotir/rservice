@@ -87,6 +87,16 @@ class TelegramController extends Controller
                    
                 }else{
                     if($telegramUser->phone==null){
+                        if(isset($data['message']['contact'])){
+                            $this->text=$data['message']['contact'];
+                            $this->sendMessage();
+                            return response()->json([
+                                'status' => 'ok'
+                            ], 200);
+
+                        }
+                        
+                        
                         $this->text="Royxatdan otish uchun telefon raqamingizni yuboring";
                         $this->keyboard= json_encode([
                             'keyboard' => [
@@ -111,10 +121,7 @@ class TelegramController extends Controller
 
                     $text=$data['message']['text'];
                     
-                    if(isset($data['message']['contact'])){
-                        $this->text=$data['message']['contact'];
-                        $this->sendMessage();
-                    }
+                   
                     
 
                     
