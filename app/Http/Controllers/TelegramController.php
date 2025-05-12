@@ -16,8 +16,10 @@ class TelegramController extends Controller
     public $keyboard='';
     
 
-    private function sendMessage($id = '1936361'){
-
+    private function sendMessage($id = ''){
+        if($id==''){
+            $id=env('CHAT_ID');
+        }
         if ($this->keyboard==''){
            $response = Http::withBody(json_encode(
             [
@@ -26,7 +28,7 @@ class TelegramController extends Controller
                 "parse_mode" => "HTML"
             ]
         ))
-            ->post("https://api.telegram.org/bot1703009548:AAHcwsAcvsN5OKe6aUNf70K9b3_ZE4VNQDs/sendMessage");
+            ->post("https://api.telegram.org/bot".env('TELEGRAM')."/sendMessage");
 
  
         }else{
@@ -37,7 +39,7 @@ class TelegramController extends Controller
                     'reply_markup'=>$this->keyboard
                 ]
             ))
-                ->post("https://api.telegram.org/bot1703009548:AAHcwsAcvsN5OKe6aUNf70K9b3_ZE4VNQDs/sendMessage");
+                ->post("https://api.telegram.org/bot".env('TELEGRAM')."/sendMessage");
     
      
 
