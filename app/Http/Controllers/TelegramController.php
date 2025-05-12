@@ -26,7 +26,7 @@ class TelegramController extends Controller
                 "parse_mode" => "HTML"
             ]
         ))
-            ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
+            ->post("https://api.telegram.org/bot1703009548:AAHcwsAcvsN5OKe6aUNf70K9b3_ZE4VNQDs/sendMessage");
 
  
         }else{
@@ -37,7 +37,7 @@ class TelegramController extends Controller
                     'reply_markup'=>$this->keyboard
                 ]
             ))
-                ->post("https://api.telegram.org/bot7751472944:AAGY7ySG0s7sOukbnwx2jlLcTPvHYdhcFfI/sendMessage");
+                ->post("https://api.telegram.org/bot1703009548:AAHcwsAcvsN5OKe6aUNf70K9b3_ZE4VNQDs/sendMessage");
     
      
 
@@ -68,9 +68,15 @@ class TelegramController extends Controller
         //if (in_array( $ipAddress,$telegramIpRanges)) {
             
             $data = $request->all();
-            $this->text=json_encode($data);
-            $this->sendMessage();
+           // $this->text=json_encode($data);
+            //$this->sendMessage();
             if (!isset($data['update_id']) ) {
+                $this->text="someone is hacking system";
+                $this->sendMessage();
+                return response()->json([
+                    'status' => 'ok'
+                ], 200);
+
                 // Нет update_id — неправильный запрос
                 //return response()->json(['error' => 'incorrect data was sent'], 400);
             }
