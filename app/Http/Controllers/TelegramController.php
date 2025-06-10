@@ -86,6 +86,7 @@ class TelegramController extends Controller
                 $this->text = "Could not find and create user";
                 $this->sendMessage($data['message']['from']['id']);
             } else {
+                
                 if ($telegramUser->phone == null) {
                     if (isset($data['message']['contact'])) {
                         if ($data['message']['contact']['user_id'] == $telegramUser->id) {
@@ -99,7 +100,7 @@ class TelegramController extends Controller
                         } else {
                             $this->text = "Bu sizning raqam emas(yoki telegramdan boshqa raqam ishlatasiz).Iltimos qaytadan yuboring";
                         }
-                        $this->sendMessage();
+                        $this->sendMessage($data['message']['from']['id']);
 
 
                         return response()->json([
@@ -127,6 +128,8 @@ class TelegramController extends Controller
 
 
                     $this->sendMessage($telegramUser->id);
+                }else{
+
                 }
 
                 $text = $data['message']['text'];

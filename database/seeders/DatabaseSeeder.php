@@ -22,15 +22,22 @@ class DatabaseSeeder extends Seeder
         // ]);
         $roles=[
             ['id'=>1,'name'=>'Admin'],
-            ['id'=>2,'name'=>'Admin'],
-            ['id'=>3,'name'=>'Admin'],
+            ['id'=>2,'name'=>'Manager'],
+            ['id'=>3,'name'=>'Accountant'],
+            ['id'=>4,'name'=>'Operator'],
+            ['id'=>5,'name'=>'Owner'],
+            ['id'=>6,'name'=>'Client']
+
 
         ];
-        Role::upsert([
-            ['id'=>1,'name'=>'Admin'],
-            ['id'],
-            ['name']
-        ]);
+        
+
+            Role::upsert(
+                $roles,
+                ['id'],
+                ['name']
+            );
+    
         User::create([
             'role_id'=>1,
             'email'=>'info@pos.uz',
