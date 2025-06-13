@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('ticket_photos', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('client_id')->constrained();
-            $table->string('inn');
-            $table->string('name');
-           
-
+            $table->foreignUuid('ticket_id')->constrained();
+            $table->string('ext');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('ticket_photos');
     }
 };

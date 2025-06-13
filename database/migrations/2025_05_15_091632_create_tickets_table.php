@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id')->constrained();
             $table->foreignUuid('company_id')->constrained();
-            $table->string('type')->default('software');
+            $table->integer('type')->default('1');
             $table->string('anydesk')->nullable();
             $table->text('text');
             

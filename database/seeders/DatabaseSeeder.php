@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -40,9 +41,9 @@ class DatabaseSeeder extends Seeder
     
         User::create([
             'role_id'=>1,
-            'email'=>'info@pos.uz',
+            'email'=>'botir.ismatov@rsg.uz',
             'name'=>'Admin',
-            'password'=>'123456789'
+            'password'=>Hash::make('123456789@')
         ]);
     }
 }

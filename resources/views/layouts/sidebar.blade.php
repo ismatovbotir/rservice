@@ -22,13 +22,13 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="{{route('bill.index')}}" class="nk-menu-link">
+                        <a href="{{route('crm.bill.index')}}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Balance</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="{{route('offer.index')}}" class="nk-menu-link">
+                        <a href="{{route('crm.offer.index')}}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
                             <span class="nk-menu-text">Tijoriy Takliflar</span>
                         </a>
@@ -55,7 +55,14 @@
                         <h6 class="overline-title text-primary-alt">Sozlamalar</h6>
                     </li><!-- .nk-menu-heading -->
                     <li class="nk-menu-item ">
-                        <a href="#" class="nk-menu-link">
+                        <a href="{{route('crm.client.index')}}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-task"></em></span>
+                            <span class="nk-menu-text">Mijozlar</span>
+                        </a>
+                        
+                    </li><!-- .nk-menu-item -->
+                    <li class="nk-menu-item ">
+                        <a href="{{route('crm.company.index')}}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-task"></em></span>
                             <span class="nk-menu-text">Tashkilotlar</span>
                         </a>
