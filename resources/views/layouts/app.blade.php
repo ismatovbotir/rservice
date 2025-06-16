@@ -12,8 +12,8 @@
     <!-- Page Title  -->
     <title>@yield('title','RService')</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="assets/css/dashlite.css?ver=2.4.0">
-    <link id="skin-default" rel="stylesheet" href="assets/css/theme.css?ver=2.4.0">
+    <link rel="stylesheet" href="{{asset('assets/css/dashlite.css?ver=2.4.0')}}">
+    <link id="skin-default" rel="{{asset('stylesheet" href="assets/css/theme.css?ver=2.4.0')}}">
 </head>
 
 <body class="nk-body bg-lighter npc-general has-sidebar ">
@@ -54,9 +54,9 @@
     <!-- JavaScript -->
     @auth
     @section('javascript')
-    <script src="./assets/js/bundle.js?ver=2.4.0"></script>
-    <script src="./assets/js/scripts.js?ver=2.4.0"></script>
-    <script src="./assets/js/charts/gd-default.js?ver=2.4.0"></script>
+    <script src="{{asset('assets/js/bundle.js?ver=2.4.0')}}"></script>
+    <script src="{{asset('assets/js/scripts.js?ver=2.4.0')}}"></script>
+    <script src="{{asset('assets/js/charts/gd-default.js?ver=2.4.0')}}"></script>
     @show
     @endauth
 </body>

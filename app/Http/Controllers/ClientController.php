@@ -62,5 +62,6 @@ class ClientController extends Controller
     public function destroy(string $id)
     {
         //
+
     }
 }
