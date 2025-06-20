@@ -38,6 +38,9 @@ Route::group(['prefix' => 'crm', 'middleware' => 'auth','as'=>'crm.'], function 
     Route::resource('/offer',OfferController::class);
     Route::resource('/appeal',AppealController::class);
     Route::resource('/company',CompanyController::class);
+    
+    Route::get('/client/{client}/users',[ClientController::class,'clientUsers'])->name('client.users');
+
     Route::resource('/client',ClientController::class);
 
 });

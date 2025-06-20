@@ -37,7 +37,7 @@ class ClientController extends Controller
     public function show(string $id)
     {
         $client=Client::where('id',$id)->first();
-        return view('client.show');
+        return view('client.show',compact('client'));
     }
 
     /**
@@ -62,6 +62,16 @@ class ClientController extends Controller
     public function destroy(string $id)
     {
         //
+
+    }
+
+    public function clientUsers($id){
+
+        $client=Client::where("id",$id)->first();
+        //dd($client);
+
+        return view('client.users',['client'=>$client]);
+        
 
     }
 }

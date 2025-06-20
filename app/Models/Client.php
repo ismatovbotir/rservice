@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Company;
+use App\Models\User;
 
 class Client extends Model
 {
@@ -17,5 +18,8 @@ class Client extends Model
 
         return $this->hasMany(Company::class);
 
+    }
+    public function users(){
+        return $this->hasMany(User::class);
     }
 }
